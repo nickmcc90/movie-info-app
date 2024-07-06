@@ -4,6 +4,7 @@ import useFetch from '../../hook/useFetch'
 
 const Header = ({ title }) => {
 
+  // console.log(title)
 
   return (
     <Text style={{ fontSize: 30}}>{title}</Text>

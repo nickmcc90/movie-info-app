@@ -33,20 +33,20 @@ const useFetch = (id) => {
     try {
       reusable = await AsyncStorage.getItem(localKey)
       reusable = JSON.parse(reusable)
-      console.log("Gottem")
+      // console.log("Gottem")
     } catch {
       reusable = false
     }
 
     if(reusable) {
-      console.log("Grabbed from cache")
+      // console.log("Grabbed from cache")
       setData(reusable)
       setIsLoading(false)
     } else {
         try {
           const response = await axios.request(options)
           AsyncStorage.setItem(localKey, JSON.stringify(response.data))
-          console.log("Grabbed from API")
+          // console.log("Grabbed from API")
           setData(response.data)
         } catch (error) {
           setError(error)

@@ -1,11 +1,16 @@
 import { Image, TouchableOpacity, View, Text } from 'react-native'
 
-const Headerbuttons = ({ children, dimension }) => {
+import { icons } from "../../extras"
+
+const Headerbuttons = ({ children, dimension, handleRoute }) => {
 
   return (
     <View style={{ flexDirection: "row", height: 50, gap: 10, paddingHorizontal: 2, marginTop: 10 }}>
       {children.map((item) => (
-        <TouchableOpacity style={{ height: "100%", width: 50, backgroundColor: "transparent", borderRadius: 10}}>
+        <TouchableOpacity 
+          style={{ height: "100%", width: 50, backgroundColor: "transparent", borderRadius: 10}}
+          onPress={handleRoute}
+        >
           <Image 
             source={item}
             resizeMode="contain"

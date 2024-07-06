@@ -9,9 +9,7 @@ import useFetch from '../../hook/useFetch'
 import CheckRating from '../../utils/checkRating'
 
 
-const Individmovies = ({ id }) => {
-
-  const router = useRouter();
+const Individmovies = ({ id, handleOverview, idcall }) => {
 
   // const poster = "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/04/25-best-action-movies-of-all-time-ranked.jpg"
   // const title = "The Avengers"
@@ -19,20 +17,23 @@ const Individmovies = ({ id }) => {
   // const ageRated = "PG 13"
   // const tomatoScore = "94%"
 
+
   const { data, isLoading, error } = useFetch(id)
 
   const ratingResult = CheckRating(data.Ratings)
 
   return (
-    <>
+    <View
+      style={{ marginHorizontal: idcall ? "auto" : 0}}
+    >
       { isLoading ? 
         (<ActivityIndicator size="large" color="lightgray" />) : 
       error ? 
         (<Text>Something went wrong...</Text>) : 
         (
           <TouchableOpacity 
-            style={{ backgroundColor: "lightblue", height: 270, width: 210 }}
-            onPress={() => router.push(`/singlemovie/${id}`)}
+            style={{ backgroundColor: "lightblue", height: idcall ? 450 : 270, width: idcall ? 350 : 210 }}
+            onPress={handleOverview}
           >
             <Image
               source={{ uri: data.Poster}}
@@ -60,7 +61,7 @@ const Individmovies = ({ id }) => {
                 <Image 
                   source={icons.tomato}
                   resizeMode="cover"
-                  style={{ height: "70%", width: "10%", display: ratingResult === "tomato" ? "inline" : "none"}}
+                  style={{ height: idcall ? "100%" : "70%", width: "10%", display: ratingResult === "tomato" ? "inline" : "none"}}
                 />
                 <Text style={{ marginTop: 4 }} >
                   {CheckRating(data.Ratings) ? 
@@ -73,7 +74,7 @@ const Individmovies = ({ id }) => {
         )
       }
 
-    </>
+    </View>
   )
 }
 
