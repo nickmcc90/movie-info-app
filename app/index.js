@@ -12,6 +12,7 @@ import Header from '../components/RestOfPage/header'
 import MovieHorizontalScroll from '../components/RestOfPage/moviehorizontalscroll'
 
 
+
 const App = () => {
 
   const router = useRouter()

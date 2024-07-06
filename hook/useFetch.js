@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 const useFetch = (id) => {
 
@@ -24,33 +26,35 @@ const useFetch = (id) => {
   const fetchdata = async () => {
     setIsLoading(true)
 
-    // const localKey = `MOVIE-${id}`
+    const localKey = `MOVIE-${id}`
 
-    // let resuable;
+    let reusable;
 
-    // try {
-    //   resuable = localStorage.getItem(localKey)
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      reusable = await AsyncStorage.getItem(localKey)
+      reusable = JSON.parse(reusable)
+      console.log("Gottem")
+    } catch {
+      reusable = false
+    }
 
-    // if(resuable) {
-    //   const reusableData = JSON.parse(resuable)
-    //   console.log("data grabbed from cache")
-    //   setData(reusableData)
-    // } else {
+    if(reusable) {
+      console.log("Grabbed from cache")
+      setData(reusable)
+      setIsLoading(false)
+    } else {
         try {
           const response = await axios.request(options)
-          // localStorage.setItem(localKey, JSON.stringify(response.data))
-          // console.log("Data grabbed from API")
+          AsyncStorage.setItem(localKey, JSON.stringify(response.data))
+          console.log("Grabbed from API")
           setData(response.data)
         } catch (error) {
           setError(error)
+          console.log(error)
         } finally {
           setIsLoading(false)
         }
-    // }
-
+    }
   }
 
   useEffect(() => {

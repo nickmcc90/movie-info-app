@@ -34,8 +34,8 @@ const Individmovies = ({ id }) => {
             style={{ backgroundColor: "lightblue", height: 270, width: 210 }}
             onPress={() => router.push(`/singlemovie/${id}`)}
           >
-            <Image 
-              source={data.Poster}
+            <Image
+              source={{ uri: data.Poster}}
               resizeMode="contain"
               style={{ width: "100%", height: "70%"}}
             />
