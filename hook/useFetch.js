@@ -1,11 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
-const [reuseableData, setReuseableData] = useState([])
-
-function persistData() {
-
-}
 
 const useFetch = (id) => {
 
@@ -29,23 +24,32 @@ const useFetch = (id) => {
   const fetchdata = async () => {
     setIsLoading(true)
 
-    const localKey = `MOVIE-${id}`
-    if(localStorage.getItem(localKey)) {
-      const reusableData = JSON.parse(localStorage.getItem(localKey))
-      console.log("data grabbed from cache")
-      setData(reusableData)
-    } else {
+    // const localKey = `MOVIE-${id}`
+
+    // let resuable;
+
+    // try {
+    //   resuable = localStorage.getItem(localKey)
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
+    // if(resuable) {
+    //   const reusableData = JSON.parse(resuable)
+    //   console.log("data grabbed from cache")
+    //   setData(reusableData)
+    // } else {
         try {
           const response = await axios.request(options)
-          localStorage.setItem(localKey, JSON.stringify(response.data))
-          console.log("Data grabbed from API")
+          // localStorage.setItem(localKey, JSON.stringify(response.data))
+          // console.log("Data grabbed from API")
           setData(response.data)
         } catch (error) {
           setError(error)
         } finally {
           setIsLoading(false)
         }
-    }
+    // }
 
   }
 

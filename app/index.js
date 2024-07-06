@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { icons, movies } from '../extras'
 
 
+
 import Headerbuttons from '../components/Header/headerbuttons'
 import Slidingbuttons from '../components/Midpage/slidingbuttons'
 import Header from '../components/RestOfPage/header'
@@ -53,3 +54,7 @@ const App = () => {
 }
 
 export default App
+
+
+// Set up a page for movie overview
+// Set up a page for scrolling though movies with a search term of title only
