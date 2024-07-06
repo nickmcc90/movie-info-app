@@ -99,6 +99,7 @@ export default App
 // Set up a page for scrolling though movies with a search term of title only
 
 
-// Need to do switching tab functionality with movie overview page
+// Need to do switching tab functionality with movie overview page. 
+// Add the fonts to _layout like you saw
 // Then on to search
 // Then favorites
