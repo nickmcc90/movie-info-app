@@ -12,7 +12,7 @@ const Slidingbuttons = ({ data, certainName, setCertainName }) => {
           <Text style={{ color: certainName === Object.keys(item)[0] ? "black" : "white"}}>{Object.keys(item)[0]}</Text>
         </TouchableOpacity>
       )}
-      keyExtractor={item => item}
+      keyExtractor={item => Object.keys(item)}
       contentContainerStyle={{ columnGap: 15 }}
       horizontal
       showsHorizontalScrollIndicator={false}

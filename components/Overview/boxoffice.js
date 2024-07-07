@@ -1,8 +1,10 @@
 import { Text } from 'react-native'
 
-const Boxoffice = () => {
+const Boxoffice = ({ money }) => {
   return (
-    <Text></Text>
+    <Text style={{ marginTop: 15, marginHorizontal: "auto" }}>
+      {money}
+    </Text>
   )
 }
 

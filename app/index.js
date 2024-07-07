@@ -14,6 +14,8 @@ import MovieHorizontalScroll from '../components/RestOfPage/moviehorizontalscrol
 
 const App = () => {
 
+  const router = useRouter()
+
   const [genre, setGenre] = useState("")
 
   const displayGenreContent = () => {
@@ -61,7 +63,10 @@ const App = () => {
             <Headerbuttons>{[icons.movie]}</Headerbuttons>
           ),
           headerRight: () => (
-            <Headerbuttons dimension="90%">{[icons.search, icons.user]}</Headerbuttons>
+            <>
+              <Headerbuttons dimension="90%" handleRoute={() => router.push(`search/find`)}>{[icons.search]}</Headerbuttons>
+              <Headerbuttons dimension="80%">{[icons.user]}</Headerbuttons>
+            </>
           ),
           headerTitle: ""
         }}
@@ -99,7 +104,7 @@ export default App
 // Set up a page for scrolling though movies with a search term of title only
 
 
-// Need to do switching tab functionality with movie overview page. 
-// Add the fonts to _layout like you saw
+// Need to do switching tab functionality with movie overview page. DONE
+// Add the fonts to _layout like you saw. DONE
 // Then on to search
 // Then favorites

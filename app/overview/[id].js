@@ -40,7 +40,7 @@ const Overview = () => {
         return (
           <>
             {isLoading ? 
-              (<ActivityIndicator />) : 
+              (<ActivityIndicator size="large" color="gray"/>) : 
             error ? 
               <Text>Something went wrong...</Text> : 
             <Plot plot={data.Plot}/>}
@@ -48,11 +48,24 @@ const Overview = () => {
         )
       case("Writers & Actors"):
         return (
-          <Writers />
+          <>
+            {isLoading ? 
+              (<ActivityIndicator size="large" color="gray"/>) : 
+            error ? 
+              <Text>Something went wrong...</Text> :
+            <Writers writers={data.Writer} actors={data.Actors}/>}
+        
+          </>
         )
       case("Box Office $$"):
         return (
-          <Boxoffice />
+          <>
+          {isLoading ? 
+            (<ActivityIndicator size="large" color="gray"/>) : 
+          error ? 
+            <Text>Something went wrong...</Text> : 
+          <Boxoffice money={data.BoxOffice}/>}
+        </>
         )
     }
   }

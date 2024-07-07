@@ -63,10 +63,8 @@ const Individmovies = ({ id, handleOverview, idcall }) => {
                   resizeMode="cover"
                   style={{ height: idcall ? "100%" : "70%", width: "10%", display: ratingResult === "tomato" ? "inline" : "none"}}
                 />
-                <Text style={{ marginTop: 4 }} >
-                  {CheckRating(data.Ratings) ? 
-                  data.Ratings[0].Value : 
-                  "For rating, tap here"}
+                <Text style={{ marginTop: 4 }}>
+                  {idcall ? data.Metascore : (CheckRating(data.Ratings) ? data.Ratings[0].Value : "For rating, tap here")}
                 </Text>
               </View>
             </View>

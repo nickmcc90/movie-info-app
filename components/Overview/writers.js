@@ -1,8 +1,17 @@
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
-const Writers = () => {
+const Writers = ({ writers, actors }) => {
   return (
-    <Text></Text>
+    <View style={{ gap: 5, marginTop: 15, marginHorizontal: "auto" }}>
+      <View style={{ flexDirection: "row" }}>
+        <Text>Actors : </Text>
+        <Text>{actors}</Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <Text>Writers : </Text>
+        <Text>{writers}</Text>
+      </View>
+    </View>
   )
 }
 
