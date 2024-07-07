@@ -60,7 +60,7 @@ const App = () => {
           headerStyle: { backgroundColor: "tan"},
           headerShadowVisible: false,
           headerLeft: () => (
-            <Headerbuttons>{[icons.movie]}</Headerbuttons>
+            <Headerbuttons dimension="90%">{[icons.movie]}</Headerbuttons>
           ),
           headerRight: () => (
             <>
@@ -107,4 +107,5 @@ export default App
 // Need to do switching tab functionality with movie overview page. DONE
 // Add the fonts to _layout like you saw. DONE
 // Then on to search
+// FIGURE OUT ID TRANSFER FROM FIND.JS TO INDIVIDMOVIES
 // Then favorites

@@ -1,0 +1,2 @@
+npm install react-native-dismiss-keyboard --save
+Then import dismissKeyboard from 'react-native-dismiss-keyboard'

@@ -17,6 +17,8 @@ const Individmovies = ({ id, handleOverview, idcall }) => {
   // const ageRated = "PG 13"
   // const tomatoScore = "94%"
 
+  console.log(id)
+
 
   const { data, isLoading, error } = useFetch(id)
 
