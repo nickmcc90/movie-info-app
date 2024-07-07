@@ -22,7 +22,7 @@ How to...
 
 ```bash
 git clone https://github.com/nickmcc90/movie-info-app.git
-cd project_react_native_jobs
+cd project-movie-info-app
 ```
 
 ## How to view the app
