@@ -1,6 +1,6 @@
-import { View, Text, TextInput, SafeAreaView, ScrollView, TouchableOpacity, FlatList, Image } from 'react-native'
+import { View, Text, TextInput, SafeAreaView, ScrollView, TouchableOpacity, FlatList, Image, SectionList, RefreshControl } from 'react-native'
 import { Stack, useRouter } from 'expo-router'
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import { icons, movies } from '../../extras'
 import SearchInput from '../../components/Header/searchinput'
@@ -9,13 +9,14 @@ import Individmovies from '../../components/RestOfPage/individmovie'
 
 const Find = () => {
 
+
   const [ notSearching, setNotSearching ] = useState(true)
+  const [ grabIds, setGrabIds ] = useState([])
 
-  const [ grabIds, setGrabIds ] = useState()
-
-  console.log(grabIds)
 
   const router = useRouter()
+
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "tan" }}>
@@ -27,7 +28,7 @@ const Find = () => {
           headerLeft: () => (
             <View style={{ flexDirection: "row", alignContent: "center" }}>
               <Headerbuttons dimension="90%" handleRoute={() => router.back()}>{[icons.left]}</Headerbuttons>
-              <SearchInput setNotSearching={setNotSearching} setGrabIds={setGrabIds}/>
+              <SearchInput setNotSearching={setNotSearching} setGrabIds={setGrabIds} />
             </View>
           ),
           headerRight: () => (
@@ -36,21 +37,27 @@ const Find = () => {
         }}
       />
 
-      <ScrollView
-       style={{ flex: 1, marginTop: 45, paddingHorizontal: 10, paddingBottom: 35, marginHorizontal: "auto" }}
-       showsVerticalScrollIndicator={false}
+      <View 
+        style={{ flex: 1, marginTop: 45, paddingHorizontal: 10, paddingBottom: 35, marginHorizontal: "auto" }}
       >
         { notSearching ? 
-            <Text>Try searching for a movie title.</Text> : 
-          <FlatList 
-            data={grabIds}
-            renderItem={({ id }) => (
-              <Individmovies id={id}/>
-            )}
-            keyExtractor={item => item}
-          />
+            <Text>Try searching for a movie title... You may have to press search twice if nothing happens.</Text> : 
+          !grabIds ? <Text>Sorry... please press search again.</Text> : 
+            <>
+              <FlatList 
+              data={grabIds}
+              renderItem={(id) => (
+                <Individmovies id={id.item} handleOverview={() => router.push(`overview/${id.item}`)}/>
+              )}
+              keyExtractor={id => id}
+              contentContainerStyle={{ rowGap: 20 }}
+              showsVerticalScrollIndicator={false}
+              vertical
+              />
+            </>
         }
-      </ScrollView>
+      </View>
+
     </SafeAreaView>
   )
 }

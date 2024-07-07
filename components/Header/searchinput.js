@@ -3,17 +3,14 @@ import { Stack, useRouter } from 'expo-router'
 import { useState } from 'react'
 import axios from 'axios'
 
-import useFetch from '../../hook/useFetch'
-
 import dismissKeyboard from 'react-native-dismiss-keyboard'
 
 const SearchInput = ({ setGrabIds, setNotSearching }) => {
 
-  const [ searchValue, setSearchValue ] = useState()
-
   const [ titleData, setTitleData ] = useState([])
   const [ titleError, setTitleError ] = useState(null)
 
+  const [ searchValue, setSearchValue ] = useState()
 
   const fetchTitle = async (title) => {
     setNotSearching(true)
@@ -39,26 +36,25 @@ const SearchInput = ({ setGrabIds, setNotSearching }) => {
       setTitleData(response.data.Search)
     } catch (error) {
       setTitleError(error)
-    } finally {
-      setNotSearching(false)
     }
 
     // Now time to get the imdbID number to useFetch...
 
-    console.log(titleData)
+    try {
 
-    const ids = titleData.map((item, index) => {
-      return item.imdbID
-    })
+      const ids = titleData.map((item, index) => {
+        return item.imdbID
+      })
+  
+      setGrabIds(ids)
 
-    setGrabIds(ids)
-
-
-
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setNotSearching(false)
+      console.log('set')
+    }
   }
-
-
-
 
 
   return (
@@ -69,11 +65,8 @@ const SearchInput = ({ setGrabIds, setNotSearching }) => {
       placeholder='Movie title...'
       autoCapitalize='sentences'
       autoCorrect={true}
-      onKeyPress={(e) => {
-        if(e.nativeEvent.key === "Enter") {
+      onSubmitEditing={() => {
           fetchTitle(searchValue)
-          dismissKeyboard();
-        }
       }}
     >
       

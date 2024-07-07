@@ -17,7 +17,6 @@ const Individmovies = ({ id, handleOverview, idcall }) => {
   // const ageRated = "PG 13"
   // const tomatoScore = "94%"
 
-  console.log(id)
 
 
   const { data, isLoading, error } = useFetch(id)
@@ -66,7 +65,7 @@ const Individmovies = ({ id, handleOverview, idcall }) => {
                   style={{ height: idcall ? "100%" : "70%", width: "10%", display: ratingResult === "tomato" ? "inline" : "none"}}
                 />
                 <Text style={{ marginTop: 4 }}>
-                  {idcall ? data.Metascore : (CheckRating(data.Ratings) ? data.Ratings[0].Value : "For rating, tap here")}
+                  {idcall ? (CheckRating(data.Ratings) ? data.Ratings[0].Value : data.Metascore) : (CheckRating(data.Ratings) ? data.Ratings[0].Value : "For rating, tap here")}
                 </Text>
               </View>
             </View>

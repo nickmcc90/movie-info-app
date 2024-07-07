@@ -12,6 +12,7 @@ import Header from '../components/RestOfPage/header'
 import MovieHorizontalScroll from '../components/RestOfPage/moviehorizontalscroll'
 
 
+
 const App = () => {
 
   const router = useRouter()
@@ -19,10 +20,8 @@ const App = () => {
   const [genre, setGenre] = useState("")
 
   const displayGenreContent = () => {
-    console.log(genre === "Action")
     switch (genre) {
       case ("Action"):
-        console.log("yes")
         return (
           <View style={{ rowGap: 20 }}>
             <Header title={Object.keys(movies[0])}/>
@@ -106,6 +105,15 @@ export default App
 
 // Need to do switching tab functionality with movie overview page. DONE
 // Add the fonts to _layout like you saw. DONE
-// Then on to search
-// FIGURE OUT ID TRANSFER FROM FIND.JS TO INDIVIDMOVIES
+// Then on to search DONE
+// FIGURE OUT ID TRANSFER FROM FIND.JS TO INDIVIDMOVIES DONE
 // Then favorites
+
+// bugs to work on...
+/* 
+
+1. Have to press the search button twice to get a result.
+2. Want to add authentication to it.
+3. Want to add favorites to enable with autentication.
+
+*/
