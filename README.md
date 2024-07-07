@@ -1,4 +1,4 @@
-# Movie Info Finder App
+# Movie Info Finder App - Made With React Native
 
 This app allows the user to search up any movie and find details about it such as the ratings, the plot, year made, writers, actors, and box
 office numbers. In addition to searching, this app has predownloaded movies of different genres to look through on the homepage. You can tap on
