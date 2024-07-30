@@ -27,3 +27,11 @@ cd project-movie-info-app
 
 ## How to view the app
 Make sure you have the expo app downloaded on your phone on the app store or google play store. When you scan the QR code given from the link in the description, it will open up my designs in the expo app.
+
+## App screenshots
+![movie1](https://github.com/user-attachments/assets/19203473-155d-4609-95fb-ba13e05d5e2a)
+![movie2](https://github.com/user-attachments/assets/1d81cd16-f077-4274-bb4b-8f66c129ab10)
+![movie3](https://github.com/user-attachments/assets/75d19d09-dc09-49df-a5ac-380e3057abcf)
+![movie4](https://github.com/user-attachments/assets/40820b2a-66b3-4b1d-9f8f-7c19e109c7b4)
+![movie5](https://github.com/user-attachments/assets/994fa727-b29a-4c4f-bc2a-3e955d1af690)
+
